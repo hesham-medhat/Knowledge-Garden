@@ -15,14 +15,14 @@ namespace Knowledge_Garden.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = Knowledge_Garden.Models.ApplicationInformation.ShortDescription;
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = Knowledge_Garden.Models.ApplicationInformation.Credits;
 
             return View();
         }
