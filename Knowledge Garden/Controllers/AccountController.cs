@@ -152,6 +152,11 @@ namespace Knowledge_Garden.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Username, Email = null };
+                if (!ApplicationUserManager.ValidateUsernameFormat(user.UserName))
+                {
+                    ViewBag.Message = "Invalid username format";
+                    return View(model);
+                }
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

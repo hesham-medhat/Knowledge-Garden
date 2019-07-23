@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Knowledge_Garden.Models;
+using System.Text.RegularExpressions;
 
 namespace Knowledge_Garden
 {
@@ -35,6 +36,7 @@ namespace Knowledge_Garden
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
+        private static readonly Regex _usernameRegex = new Regex("^[0-9a-zA-Z.]{2,20}$");
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
@@ -85,6 +87,11 @@ namespace Knowledge_Garden
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
+        }
+
+        public static bool ValidateUsernameFormat(string username)
+        {
+            return _usernameRegex.IsMatch(username);
         }
     }
 
