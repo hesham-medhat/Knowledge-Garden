@@ -6,8 +6,9 @@ namespace Knowledge_Garden.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Username")]
+        [StringLength(50, ErrorMessage = "Username length can't be more than 50.")]
+        public string Username { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -49,12 +50,13 @@ namespace Knowledge_Garden.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Username")]
+        [StringLength(50, ErrorMessage = "Username length can't be more than 50.")]
+        public string Username { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
+        [StringLength(50, ErrorMessage = "Password length can't be more than 50.")]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
@@ -65,12 +67,12 @@ namespace Knowledge_Garden.Models
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [StringLength(20, ErrorMessage = "Username length can't be more than 20.")]
+        [Display(Name = "Username")]
+        public string Username { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(20, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -84,12 +86,12 @@ namespace Knowledge_Garden.Models
     public class ResetPasswordViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [Display(Name = "Username")]
+        [StringLength(20, ErrorMessage = "Username length can't be more than 20.")]
+        public string Username { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(20, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
