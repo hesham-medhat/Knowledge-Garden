@@ -26,5 +26,12 @@ namespace Knowledge_Garden.Controllers
 
             return View();
         }
+
+        public ActionResult Debug()
+        {
+            ViewBag.Message = Knowledge_Garden.Models.ApplicationInformation.Credits;
+
+            return View();
+        }
     }
 }
