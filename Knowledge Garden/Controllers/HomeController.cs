@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Security.Claims;
 
 namespace Knowledge_Garden.Controllers
 {
@@ -29,7 +30,7 @@ namespace Knowledge_Garden.Controllers
 
         public ActionResult Debug()
         {
-            ViewBag.Message = Knowledge_Garden.Models.ApplicationInformation.Credits;
+            ViewBag.Message = User.Identity.Name;
 
             return View();
         }

@@ -30,6 +30,5 @@ namespace Knowledge_Garden.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Knowledge_Garden.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
