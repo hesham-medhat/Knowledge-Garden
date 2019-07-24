@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Knowledge_Garden.Models;
+using Knowledge_Garden.Engine.Data;
 using System.Text.RegularExpressions;
 
 namespace Knowledge_Garden
