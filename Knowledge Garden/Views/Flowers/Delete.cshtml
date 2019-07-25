@@ -1,4 +1,4 @@
-﻿@model Knowledge_Garden.Engine.Models.FlowerDisplayViewModel
+﻿@model Knowledge_Garden.Models.FlowerAddOrEditViewModel
 
 @{
     ViewBag.Title = "Delete";
@@ -53,16 +53,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayFor(model => model.Attachments)
+            @Html.DisplayFor(model => model.AttachmentNames)
         </dt>
 
         @if (Model.Attachments != null)
         {
-            foreach (var item in Model.Attachments)
+            foreach (var item in Model.AttachmentNames)
             {
             <dd>
-                @Html.Label(item.Name)
-                <a target="_blank" href="@item.Name">Download File</a>
+                @Html.Label(item)
+                <a target="_blank" href="@item">Download File</a>
             </dd>
 
             }

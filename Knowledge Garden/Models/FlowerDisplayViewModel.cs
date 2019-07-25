@@ -7,6 +7,7 @@ namespace Knowledge_Garden.Models
 {
     public class FlowerDisplayViewModel
     {
+        public string OwnerUsername { get; set; }
         public string Title { get; set; }
 
         public string Problem { get; set; }

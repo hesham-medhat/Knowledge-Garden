@@ -8,13 +8,14 @@ namespace Knowledge_Garden.Models
 {
     public static class FlowerViewModelFactory
     {
-        public static FlowerDisplayViewModel CreateDisplayModel(Flower flower)
+        public static FlowerDisplayViewModel CreateDisplayModel(Flower flower, string ownerUsername)
         {
             FlowerDisplayViewModel model = new FlowerDisplayViewModel
             {
                 Problem = flower.Problem,
                 Solution = flower.Solution,
-                Title = flower.Title
+                Title = flower.Title,
+                OwnerUsername = ownerUsername
                 // TODO: Get attachment files
             };
             return model;
@@ -30,12 +31,15 @@ namespace Knowledge_Garden.Models
                 Id = flower.Id
             };
 
-            #region Build names array
-            int size = flower.Attachments.Length;
-            string[] namesArray = new string[size];
-            for (int i = 0; i < size; i++) namesArray[i] = flower.Attachments[i].Name;
-            model.AttachmentNames = namesArray;
-            #endregion
+            if (flower.Attachments != null)
+            {
+                #region Build names array
+                int size = flower.Attachments.Length;
+                string[] namesArray = new string[size];
+                for (int i = 0; i < size; i++) namesArray[i] = flower.Attachments[i].Name;
+                model.AttachmentNames = namesArray;
+                #endregion
+            }
 
             return model;
         }
