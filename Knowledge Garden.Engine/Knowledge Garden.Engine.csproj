@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationInformation.cs" />
     <Compile Include="Models\Attachment.cs" />
     <Compile Include="Models\Flower.cs" />

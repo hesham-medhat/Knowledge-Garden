@@ -17,5 +17,7 @@ namespace Knowledge_Garden.Engine.Models
         public string Solution { get; set; }
 
         public string AttachmentNames { get; set; }
+
+        public DateTime LastUpdateDate { get; set; }
     }
 }

@@ -13,5 +13,7 @@ namespace Knowledge_Garden.Engine.Models
         public IEnumerable<Flower> OwnedFlowers { get; set; }
 
         public IEnumerable<Flower> UnreadFlowers { get; set; }
+
+        public DateTime? LastContributionTime { get; set; }
     }
 }
