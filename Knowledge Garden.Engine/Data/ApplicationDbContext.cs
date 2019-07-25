@@ -22,8 +22,8 @@ namespace Knowledge_Garden.Engine.Data
             return new ApplicationDbContext();
         }
 
-        //public DbSet<Flower> Flowers { get; set; }
-        //public DbSet<Employee> Employees { get; set; }
-        //public DbSet<Attachment> Attachments { get; set; }
+        public DbSet<Flower> Flowers { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Attachment> Attachments { get; set; }
     }
 }
