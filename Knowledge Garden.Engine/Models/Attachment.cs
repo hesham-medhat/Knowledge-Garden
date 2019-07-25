@@ -8,6 +8,9 @@ namespace Knowledge_Garden.Engine.Models
 {
     public class Attachment
     {
+        /// <summary>
+        /// The flower that this attachment belongs to
+        /// </summary>
         public Flower flower { get; set; }
         public IEnumerable<byte> blobValue { get; set; }
     }

@@ -7,7 +7,8 @@ namespace Knowledge_Garden.Models
 {
     /// <summary>
     /// The class responsible for holding general information of the application in the
-    /// intent of having less hard-coded strings in views
+    /// intent of having less hard-coded strings in views and this is essentially the
+    /// same information describing the application across all platforms
     /// </summary>
     public static class ApplicationInformation
     {
