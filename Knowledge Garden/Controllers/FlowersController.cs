@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Knowledge_Garden.Engine.Data;
 using Knowledge_Garden.Engine.Models;
+using Knowledge_Garden.Models;
 
 namespace Knowledge_Garden.Controllers
 {
@@ -33,6 +34,8 @@ namespace Knowledge_Garden.Controllers
             {
                 return HttpNotFound();
             }
+            // Generate display view model
+            FlowerDisplayViewModel displayFlower = FlowerViewModelFactory.CreateDisplayModel(flower);
             return View(flower);
         }
 
@@ -47,16 +50,24 @@ namespace Knowledge_Garden.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Problem,Solution,LastUpdateDate")] Flower flower)
+        public ActionResult Create([Bind(Include = "Title,Problem,Solution")] FlowerAddOrEditViewModel flowerModel)
         {
             if (ModelState.IsValid)
             {
+                var flower = new Flower
+                {
+                    LastUpdateDate = DateTime.Now,
+                    Owner = db.Employees.Find(User.Identity.Name),
+                    Problem = flowerModel.Problem,
+                    Solution = flowerModel.Solution,
+                    Title = flowerModel.Title
+                };
                 db.Flowers.Add(flower);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(flower);
+            return View(flowerModel);
         }
 
         // GET: Flowers/Edit/5
@@ -71,7 +82,8 @@ namespace Knowledge_Garden.Controllers
             {
                 return HttpNotFound();
             }
-            return View(flower);
+            var flowerModel = FlowerViewModelFactory.CreateAddOrEditViewModel(flower);
+            return View(flowerModel);
         }
 
         // POST: Flowers/Edit/5
@@ -79,15 +91,22 @@ namespace Knowledge_Garden.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Problem,Solution,LastUpdateDate")] Flower flower)
+        public ActionResult Edit([Bind(Include = "Id,Title,Problem,Solution")] FlowerAddOrEditViewModel flowerModel)
         {
             if (ModelState.IsValid)
             {
+                var flower = new Flower {
+                    LastUpdateDate = DateTime.Now,
+                    Owner = db.Employees.Find(User.Identity.Name),
+                    Problem = flowerModel.Problem,
+                    Solution = flowerModel.Solution,
+                    Title = flowerModel.Title
+                };
                 db.Entry(flower).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(flower);
+            return View(flowerModel);
         }
 
         // GET: Flowers/Delete/5
@@ -102,7 +121,8 @@ namespace Knowledge_Garden.Controllers
             {
                 return HttpNotFound();
             }
-            return View(flower);
+            var flowerModel = FlowerViewModelFactory.CreateAddOrEditViewModel(flower);
+            return View(flowerModel);
         }
 
         // POST: Flowers/Delete/5

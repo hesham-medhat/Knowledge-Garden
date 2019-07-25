@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Knowledge_Garden.Engine.Models.Flower>
+﻿@model IEnumerable<Knowledge_Garden.Engine.Models.FlowerDisplayViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -14,6 +14,9 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Owner.Username)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Problem)
@@ -33,6 +36,9 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Owner.Username)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Problem)
         </td>
         <td>
@@ -41,6 +47,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.LastUpdateDate)
         </td>
+        @if (item.Attachments != null)
+        {
+            foreach (var attachment in item.Attachments)
+            {
+            <td>
+                @Html.Label(attachment.Name)
+                <a target="_blank" href="@attachment.Name">Download File</a>
+            </td>
+            }
+        }
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |

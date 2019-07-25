@@ -28,7 +28,7 @@ namespace Knowledge_Garden.Engine.Models
         [Column("Solution", TypeName = "ntext")]
         public string Solution { get; set; }
 
-        public IEnumerable<Attachment> Attachments { get; set; }
+        public Attachment[] Attachments { get; set; }
 
         public DateTime LastUpdateDate { get; set; }
     }

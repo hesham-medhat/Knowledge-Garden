@@ -1,4 +1,4 @@
-﻿@model Knowledge_Garden.Engine.Models.Flower
+﻿@model Knowledge_Garden.Engine.Models.FlowerDisplayViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -17,6 +17,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner.Username)
         </dd>
 
         <dt>
@@ -42,6 +50,22 @@
         <dd>
             @Html.DisplayFor(model => model.LastUpdateDate)
         </dd>
+
+        <dt>
+            @Html.DisplayFor(model => model.Attachments)
+        </dt>
+
+        @if (Model.Attachments != null)
+        {
+            foreach (var item in Model.Attachments)
+            {
+            <dd>
+                @Html.Label(item.Name)
+                <a  target="_blank" href="@item.Name" >Download File</a>
+            </dd>
+
+            }
+        }
 
     </dl>
 </div>
