@@ -13,17 +13,15 @@ namespace Knowledge_Garden.Engine.Models
         /// <summary>
         /// The flower that this attachment belongs to
         /// </summary>
-        [Key]
-        [Column(Order=1)]
+        [Key, Column(Order=1)]
         [Required]
         public Flower Flower { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
+        [Key, Column(Order = 2)]
         [Required]
         public string Name { get; set; }
 
         [Required]
-        public IEnumerable<byte> blobValue { get; set; }
+        public byte[] blobValue { get; set; }
     }
 }

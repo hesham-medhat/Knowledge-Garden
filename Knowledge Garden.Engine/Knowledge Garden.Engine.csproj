@@ -89,6 +89,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Migrations\201907251108445_CreateInitialSchema.cs" />
+    <Compile Include="Migrations\201907251108445_CreateInitialSchema.Designer.cs">
+      <DependentUpon>201907251108445_CreateInitialSchema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907251201271_StoreBLOBValue.cs" />
+    <Compile Include="Migrations\201907251201271_StoreBLOBValue.Designer.cs">
+      <DependentUpon>201907251201271_StoreBLOBValue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationInformation.cs" />
     <Compile Include="Models\Attachment.cs" />
@@ -108,6 +116,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907251108445_CreateInitialSchema.resx">
+      <DependentUpon>201907251108445_CreateInitialSchema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907251201271_StoreBLOBValue.resx">
+      <DependentUpon>201907251201271_StoreBLOBValue.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

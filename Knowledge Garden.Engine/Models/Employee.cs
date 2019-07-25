@@ -22,7 +22,6 @@ namespace Knowledge_Garden.Engine.Models
         /// Refers to the username of the application user which should map to Username
         /// in the authentication table
         /// </summary>
-        [Index(IsUnique = true)]
         [Key]
         public string Username { get; set; }
 
