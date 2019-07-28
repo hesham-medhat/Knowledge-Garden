@@ -19,7 +19,5 @@ namespace Knowledge_Garden.Models
         public DateTime LastUpdateDate { get; set; }
 
         public List<string> AttachmentNames { get; set; }
-
-        public byte[] AttachmentBlobValues { get; set; }
     }
 }

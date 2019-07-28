@@ -20,7 +20,5 @@ namespace Knowledge_Garden.Models
         public string Solution { get; set; }
 
         public List<string> AttachmentNames { get; set; }
-
-        public byte[] AttachmentBlobValues { get; set; }
     }
 }
