@@ -89,7 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\ApplicationDbContext.cs" />
-    <Compile Include="DataAccess\DataBuilder.cs" />
+    <Compile Include="DataAccess\DataManager.cs" />
     <Compile Include="Migrations\201907251108445_CreateInitialSchema.cs" />
     <Compile Include="Migrations\201907251108445_CreateInitialSchema.Designer.cs">
       <DependentUpon>201907251108445_CreateInitialSchema.cs</DependentUpon>

@@ -14,12 +14,12 @@ namespace Knowledge_Garden.Controllers
 {
     public class FlowersController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private DataManager _dataManager = DataManager.Instance();
 
         // GET: Flowers
         public ActionResult Index()
         {
-            return View(db.Flowers.ToList());
+            return View(_dataManager.GetAllFlowers());
         }
 
         // GET: Flowers/Details/5
@@ -29,7 +29,7 @@ namespace Knowledge_Garden.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flower flower = db.Flowers.Find(id);
+            Flower flower = _dataManager.GetFlower(id.Value, loadOwner: true);
             if (flower == null)
             {
                 return HttpNotFound();
@@ -54,16 +54,12 @@ namespace Knowledge_Garden.Controllers
         {
             if (ModelState.IsValid)
             {
-                var flower = new Flower
-                {
-                    LastUpdateDate = DateTime.Now,
-                    Owner = db.Employees.Find(User.Identity.Name),
-                    Problem = flowerModel.Problem,
-                    Solution = flowerModel.Solution,
-                    Title = flowerModel.Title
-                };
-                db.Flowers.Add(flower);
-                db.SaveChanges();
+                _dataManager.AddFlower(
+                    editorUsername: User.Identity.Name,
+                    problem: flowerModel.Problem,
+                    solution: flowerModel.Solution,
+                    title: flowerModel.Title
+                    );
                 return RedirectToAction("Index");
             }
 
@@ -77,7 +73,7 @@ namespace Knowledge_Garden.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flower flower = db.Flowers.Find(id);
+            Flower flower = _dataManager.GetFlower(id.Value, loadOwner: false);
             if (flower == null)
             {
                 return HttpNotFound();
@@ -95,15 +91,12 @@ namespace Knowledge_Garden.Controllers
         {
             if (ModelState.IsValid)
             {
-                var flower = new Flower {
-                    LastUpdateDate = DateTime.Now,
-                    Owner = db.Employees.Find(User.Identity.Name),
-                    Problem = flowerModel.Problem,
-                    Solution = flowerModel.Solution,
-                    Title = flowerModel.Title
-                };
-                db.Entry(flower).State = EntityState.Modified;
-                db.SaveChanges();
+                _dataManager.EditFlower(
+                    editorUsername: User.Identity.Name,
+                    flowerId: flowerModel.Id,
+                    problem: flowerModel.Problem,
+                    solution: flowerModel.Solution,
+                    title: flowerModel.Title);
                 return RedirectToAction("Index");
             }
             return View(flowerModel);
@@ -116,7 +109,7 @@ namespace Knowledge_Garden.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flower flower = db.Flowers.Find(id);
+            Flower flower = _dataManager.GetFlower(id.Value);
             if (flower == null)
             {
                 return HttpNotFound();
@@ -130,9 +123,7 @@ namespace Knowledge_Garden.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Flower flower = db.Flowers.Find(id);
-            db.Flowers.Remove(flower);
-            db.SaveChanges();
+            _dataManager.RemoveFlower(id);
             return RedirectToAction("Index");
         }
 
@@ -140,7 +131,7 @@ namespace Knowledge_Garden.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _dataManager.Dispose();
             }
             base.Dispose(disposing);
         }

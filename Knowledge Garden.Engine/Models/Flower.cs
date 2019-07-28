@@ -13,7 +13,6 @@ namespace Knowledge_Garden.Engine.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
         public virtual Employee Owner { get; set; }
 
         [Required]
@@ -31,5 +30,7 @@ namespace Knowledge_Garden.Engine.Models
         public virtual ICollection<Attachment> Attachments { get; set; }
 
         public DateTime LastUpdateDate { get; set; }
+
+        public ICollection<Employee> UnreadEmployees { get; set; }
     }
 }
