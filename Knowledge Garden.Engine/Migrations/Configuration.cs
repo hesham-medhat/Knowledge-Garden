@@ -5,7 +5,7 @@ namespace Knowledge_Garden.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Knowledge_Garden.Engine.Data.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Knowledge_Garden.Engine.DataAccess.ApplicationDbContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace Knowledge_Garden.Migrations
             ContextKey = "Knowledge_Garden.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(Knowledge_Garden.Engine.Data.ApplicationDbContext context)
+        protected override void Seed(Knowledge_Garden.Engine.DataAccess.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

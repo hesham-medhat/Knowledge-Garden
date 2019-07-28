@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Knowledge_Garden.Models;
 using Knowledge_Garden.Engine.Models;
 
-namespace Knowledge_Garden.Engine.Data
+namespace Knowledge_Garden.Engine.DataAccess
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

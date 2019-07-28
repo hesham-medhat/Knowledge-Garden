@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Knowledge_Garden.Engine.Data;
+using Knowledge_Garden.Engine.DataAccess;
 using Knowledge_Garden.Engine.Models;
 using Knowledge_Garden.Models;
 
@@ -35,7 +35,7 @@ namespace Knowledge_Garden.Controllers
                 return HttpNotFound();
             }
             // Generate display view model
-            FlowerDisplayViewModel displayFlower = FlowerViewModelFactory.CreateDisplayModel(flower, flower.Owner.Username);
+            FlowerDisplayViewModel displayFlower = FlowerViewModelFactory.CreateDisplayModel(flower);
             return View(displayFlower);
         }
 

@@ -7,6 +7,8 @@ namespace Knowledge_Garden.Models
 {
     public class FlowerDisplayViewModel
     {
+        public int Id { get; set; }
+
         public string OwnerUsername { get; set; }
         public string Title { get; set; }
 
@@ -14,7 +16,9 @@ namespace Knowledge_Garden.Models
 
         public string Solution { get; set; }
 
-        public string[] AttachmentNames { get; set; }
+        public DateTime LastUpdateDate { get; set; }
+
+        public List<string> AttachmentNames { get; set; }
 
         public byte[] AttachmentBlobValues { get; set; }
     }

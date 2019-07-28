@@ -25,9 +25,9 @@ namespace Knowledge_Garden.Engine.Models
         [Key]
         public string Username { get; set; }
 
-        public IEnumerable<Flower> OwnedFlowers { get; set; }
+        public ICollection<Flower> OwnedFlowers { get; set; }
 
-        public IEnumerable<Flower> UnreadFlowers { get; set; }
+        public ICollection<Flower> UnreadFlowers { get; set; }
 
         public DateTime? LastContributionTime { get; set; }
     }
