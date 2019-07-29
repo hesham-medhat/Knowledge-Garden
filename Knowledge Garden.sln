@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knowledge Garden.WebView", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knowledge Garden.Engine", "Knowledge Garden.Engine\Knowledge Garden.Engine.csproj", "{2148437E-FD1F-4E54-9C79-1A2E8BF9C788}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Knowledge Garden.DataAccess", "Knowledge Garden.DataAccess\Knowledge Garden.DataAccess.csproj", "{64BF4B27-AE9C-4923-B3AC-A31C1590B4EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2148437E-FD1F-4E54-9C79-1A2E8BF9C788}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2148437E-FD1F-4E54-9C79-1A2E8BF9C788}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2148437E-FD1F-4E54-9C79-1A2E8BF9C788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64BF4B27-AE9C-4923-B3AC-A31C1590B4EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64BF4B27-AE9C-4923-B3AC-A31C1590B4EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64BF4B27-AE9C-4923-B3AC-A31C1590B4EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64BF4B27-AE9C-4923-B3AC-A31C1590B4EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
