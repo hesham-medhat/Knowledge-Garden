@@ -9,7 +9,7 @@ namespace Knowledge_Garden.DataAccess.Repositories
 {
     public interface INotificationsRepository : IRepository<Notification>
     {
-        IEnumerable<string> GetNotifications(Employee employee);
-        IEnumerable<string> GetNotifications(string employeeUsername);
+        IEnumerable<string> GetNotificationsTitles(Employee employee);
+        IEnumerable<string> GetNotificationsTitles(string employeeUsername);
     }
 }

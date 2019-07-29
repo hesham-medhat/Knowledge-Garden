@@ -56,7 +56,7 @@ namespace Knowledge_Garden.DataAccess.Repositories
 
         public IEnumerable<TEntity> Select(Expression<Func<TEntity, bool>> predicate)
         {
-            return Context.Set<TEntity>().Where(predicate);
+            return Context.Set<TEntity>().Where(predicate).ToList();
         }
     }
 }

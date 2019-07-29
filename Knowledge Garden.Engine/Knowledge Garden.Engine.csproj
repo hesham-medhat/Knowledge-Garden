@@ -89,7 +89,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\ApplicationDbContext.cs" />
-    <Compile Include="DataAccess\DataManager.cs" />
+    <Compile Include="DataAccess\IUnitOfWork.cs" />
+    <Compile Include="DataAccess\Repositories\AttachmentRepository.cs" />
+    <Compile Include="DataAccess\Repositories\EmployeeRepository.cs" />
+    <Compile Include="DataAccess\Repositories\FlowerRepository.cs" />
+    <Compile Include="DataAccess\Repositories\IAttachmentRepository.cs" />
+    <Compile Include="DataAccess\Repositories\IEmployeeRepository.cs" />
+    <Compile Include="DataAccess\Repositories\IFlowerRepository.cs" />
+    <Compile Include="DataAccess\Repositories\INotificationsRepository.cs" />
+    <Compile Include="DataAccess\Repositories\IRepository.cs" />
+    <Compile Include="DataAccess\Repositories\NotificationsRepository.cs" />
+    <Compile Include="DataAccess\Repositories\Repository.cs" />
+    <Compile Include="DataAccess\UnitOfWork.cs" />
     <Compile Include="Migrations\201907251108445_CreateInitialSchema.cs" />
     <Compile Include="Migrations\201907251108445_CreateInitialSchema.Designer.cs">
       <DependentUpon>201907251108445_CreateInitialSchema.cs</DependentUpon>

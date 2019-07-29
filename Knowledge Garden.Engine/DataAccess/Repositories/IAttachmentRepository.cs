@@ -10,5 +10,6 @@ namespace Knowledge_Garden.DataAccess.Repositories
     public interface IAttachmentRepository : IRepository<Attachment>
     {
         IEnumerable<string> GetAttachmentNamesOf(Flower flower);
+        IEnumerable<string> GetAttachmentNamesOf(int flowerId);
     }
 }

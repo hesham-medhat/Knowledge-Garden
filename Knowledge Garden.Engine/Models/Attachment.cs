@@ -17,6 +17,10 @@ namespace Knowledge_Garden.Engine.Models
         [Required]
         public virtual Flower Flower { get; set; }
 
+        [Key, Column(Order = 1)]
+        [Required]
+        public int FlowerId { get; set; }
+
         [Key, Column(Order = 2)]
         [Required]
         public string Name { get; set; }

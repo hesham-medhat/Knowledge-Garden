@@ -14,12 +14,12 @@ namespace Knowledge_Garden.Controllers
 {
     public class FlowersController : Controller
     {
-        private DataManager _dataManager = DataManager.Instance();
+        private UnitOfWork uow = new UnitOfWork();
 
         // GET: Flowers
         public ActionResult Index()
         {
-            return View(_dataManager.GetAllFlowers());
+            return View(uow.Flowers.GetAllFlowers());
         }
 
         // GET: Flowers/Details/5
@@ -29,7 +29,7 @@ namespace Knowledge_Garden.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flower flower = _dataManager.GetFlower(id.Value, loadOwner: true);
+            Flower flower = uow.Flowers.GetFlower(id.Value);
             if (flower == null)
             {
                 return HttpNotFound();
@@ -54,7 +54,7 @@ namespace Knowledge_Garden.Controllers
         {
             if (ModelState.IsValid)
             {
-                _dataManager.AddFlower(
+                uow.Flowers.AddFlower(
                     editorUsername: User.Identity.Name,
                     problem: flowerModel.Problem,
                     solution: flowerModel.Solution,
@@ -73,7 +73,7 @@ namespace Knowledge_Garden.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flower flower = _dataManager.GetFlower(id.Value, loadOwner: false);
+            Flower flower = uow.Flowers.GetFlower(id.Value);
             if (flower == null)
             {
                 return HttpNotFound();
@@ -91,7 +91,7 @@ namespace Knowledge_Garden.Controllers
         {
             if (ModelState.IsValid)
             {
-                _dataManager.EditFlower(
+                uow.Flowers.EditFlower(
                     editorUsername: User.Identity.Name,
                     flowerId: flowerModel.Id,
                     problem: flowerModel.Problem,
@@ -109,7 +109,7 @@ namespace Knowledge_Garden.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flower flower = _dataManager.GetFlower(id.Value);
+            Flower flower = uow.Flowers.GetFlower(id.Value);
             if (flower == null)
             {
                 return HttpNotFound();
@@ -123,7 +123,7 @@ namespace Knowledge_Garden.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            _dataManager.RemoveFlower(id);
+            uow.Flowers.RemoveFlower(id);
             return RedirectToAction("Index");
         }
 
@@ -131,7 +131,8 @@ namespace Knowledge_Garden.Controllers
         {
             if (disposing)
             {
-                _dataManager.Dispose();
+                uow.Save();
+                uow.Dispose();
             }
             base.Dispose(disposing);
         }
