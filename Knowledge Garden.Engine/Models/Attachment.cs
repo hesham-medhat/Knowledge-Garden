@@ -15,7 +15,7 @@ namespace Knowledge_Garden.Engine.Models
         /// </summary>
         [Key, Column(Order=1)]
         [Required]
-        public Flower Flower { get; set; }
+        public virtual Flower Flower { get; set; }
 
         [Key, Column(Order = 2)]
         [Required]

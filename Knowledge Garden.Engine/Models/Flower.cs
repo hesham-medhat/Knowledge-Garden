@@ -15,6 +15,8 @@ namespace Knowledge_Garden.Engine.Models
 
         public virtual Employee Owner { get; set; }
 
+        public string OwnerUsername { get; set; }
+
         [Required]
         [MaxLength(100)]
         public string Title { get; set; }
@@ -27,10 +29,10 @@ namespace Knowledge_Garden.Engine.Models
         [Column("Solution", TypeName = "ntext")]
         public string Solution { get; set; }
 
-        public virtual ICollection<Attachment> Attachments { get; set; }
-
         public DateTime LastUpdateDate { get; set; }
 
-        public ICollection<Employee> UnreadEmployees { get; set; }
+        public virtual ICollection<Attachment> Attachments { get; set; }
+
+        public virtual ICollection<Notification> Notifications { get; set; }
     }
 }

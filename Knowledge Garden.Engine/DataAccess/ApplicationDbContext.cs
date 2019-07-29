@@ -25,5 +25,6 @@ namespace Knowledge_Garden.Engine.DataAccess
         public DbSet<Flower> Flowers { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Attachment> Attachments { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
     }
 }

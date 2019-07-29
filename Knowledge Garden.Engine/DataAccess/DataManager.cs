@@ -105,7 +105,7 @@ namespace Knowledge_Garden.Engine.DataAccess
             editor.LastContributionTime = DateTime.Now;
 
             db.Entry(editor).State = EntityState.Modified;
-            db.Entry(editor).Property(e => e.UserId).IsModified = false;
+            db.Entry(editor).Property(e => e.ApplicationUser).IsModified = false;
             db.Entry(editor).Property(e => e.Username).IsModified = false;
             db.Entry(editor).Property(e => e.Flowers).IsModified = false;
         }

@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Knowledge_Garden.Engine.Models
 {
@@ -16,7 +13,7 @@ namespace Knowledge_Garden.Engine.Models
         /// </summary>
         [Index(IsUnique = true)]
         [Required]
-        public ApplicationUser UserId { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
         /// <summary>
         /// Refers to the username of the application user which should map to Username
@@ -25,8 +22,10 @@ namespace Knowledge_Garden.Engine.Models
         [Key]
         public string Username { get; set; }
 
-        public ICollection<Flower> Flowers { get; set; }
-
         public DateTime? LastContributionTime { get; set; }
+
+        public virtual ICollection<Flower> Flowers { get; set; }
+
+        public virtual ICollection<Notification> Notifications { get; set; }
     }
 }
