@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 namespace Knowledge_Garden.Engine.DataAccess.Repositories
 {
-    class NotificationsRepository : Repository<Notification>, INotificationsRepository
+    class NotificationRepository : Repository<Notification>, INotificationRepository
     {
-        public NotificationsRepository(ApplicationDbContext context) : base(context)
+        public NotificationRepository(ApplicationDbContext context) : base(context)
         {
         }
 

@@ -96,9 +96,9 @@
     <Compile Include="DataAccess\Repositories\IAttachmentRepository.cs" />
     <Compile Include="DataAccess\Repositories\IEmployeeRepository.cs" />
     <Compile Include="DataAccess\Repositories\IFlowerRepository.cs" />
-    <Compile Include="DataAccess\Repositories\INotificationsRepository.cs" />
+    <Compile Include="DataAccess\Repositories\INotificationRepository.cs" />
     <Compile Include="DataAccess\Repositories\IRepository.cs" />
-    <Compile Include="DataAccess\Repositories\NotificationsRepository.cs" />
+    <Compile Include="DataAccess\Repositories\NotificationRepository.cs" />
     <Compile Include="DataAccess\Repositories\Repository.cs" />
     <Compile Include="DataAccess\UnitOfWork.cs" />
     <Compile Include="Migrations\201907251108445_CreateInitialSchema.cs" />

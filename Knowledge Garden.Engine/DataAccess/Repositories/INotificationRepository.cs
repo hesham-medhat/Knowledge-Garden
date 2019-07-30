@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Knowledge_Garden.DataAccess.Repositories
 {
-    public interface INotificationsRepository : IRepository<Notification>
+    public interface INotificationRepository : IRepository<Notification>
     {
         IEnumerable<string> GetNotificationsTitles(Employee employee);
         IEnumerable<string> GetNotificationsTitles(string employeeUsername);

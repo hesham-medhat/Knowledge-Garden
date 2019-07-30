@@ -13,7 +13,7 @@ namespace Knowledge_Garden.Engine.DataAccess
         IAttachmentRepository Attachments { get; }
         IEmployeeRepository Employees { get; }
         IFlowerRepository Flowers { get; }
-        INotificationsRepository Notifications { get; }
+        INotificationRepository Notifications { get; }
 
         /* Save */
         int Save();
