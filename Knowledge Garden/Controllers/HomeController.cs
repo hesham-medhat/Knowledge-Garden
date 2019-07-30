@@ -11,6 +11,10 @@ namespace Knowledge_Garden.Controllers
     {
         public ActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Flowers");
+            }
             return View();
         }
 

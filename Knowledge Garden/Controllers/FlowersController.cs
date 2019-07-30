@@ -15,7 +15,7 @@ namespace Knowledge_Garden.Controllers
     [Authorize]
     public class FlowersController : Controller
     {
-        private UnitOfWork uow = new UnitOfWork();
+        private IUnitOfWork uow = new UnitOfWork();
 
         // GET: Flowers
         public ActionResult Index()
