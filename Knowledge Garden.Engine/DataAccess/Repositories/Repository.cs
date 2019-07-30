@@ -27,9 +27,9 @@ namespace Knowledge_Garden.DataAccess.Repositories
             Context.Set<TEntity>().AddRange(entities);
         }
 
-        public TEntity Find(int id)
+        public TEntity Find(params object[] keyValues)
         {
-            return Context.Set<TEntity>().Find(id);
+            return Context.Set<TEntity>().Find(keyValues);
         }
 
         public IEnumerable<TEntity> GetAll()

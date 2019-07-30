@@ -8,7 +8,7 @@ namespace Knowledge_Garden.DataAccess.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        TEntity Find(int id);
+        TEntity Find(params object[] keyValues);
         IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> GetAll(int pageIndex, int pageSize);
         IEnumerable<TEntity> Select(Expression<Func<TEntity, bool>> predicate);
