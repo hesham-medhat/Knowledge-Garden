@@ -12,6 +12,7 @@ using Knowledge_Garden.Models;
 
 namespace Knowledge_Garden.Controllers
 {
+    [Authorize]
     public class FlowersController : Controller
     {
         private UnitOfWork uow = new UnitOfWork();
