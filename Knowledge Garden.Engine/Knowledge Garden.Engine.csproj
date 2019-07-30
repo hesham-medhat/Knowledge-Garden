@@ -113,6 +113,10 @@
     <Compile Include="Migrations\201907290824536_CreateNotificationsBridge.Designer.cs">
       <DependentUpon>201907290824536_CreateNotificationsBridge.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907300818550_FixAttachmentCompositePK.cs" />
+    <Compile Include="Migrations\201907300818550_FixAttachmentCompositePK.Designer.cs">
+      <DependentUpon>201907300818550_FixAttachmentCompositePK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationInformation.cs" />
     <Compile Include="Models\Attachment.cs" />
@@ -143,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907290824536_CreateNotificationsBridge.resx">
       <DependentUpon>201907290824536_CreateNotificationsBridge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907300818550_FixAttachmentCompositePK.resx">
+      <DependentUpon>201907300818550_FixAttachmentCompositePK.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
