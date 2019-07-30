@@ -18,6 +18,12 @@ namespace Knowledge_Garden
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "FlowerAttachments",
+                url: "{controller}/{action}/{flowerId}/{attachmentName}",
+                defaults: new { controller = "Attachment", action = "Details", flowerId = "", attachmentName = "" }
+            );
         }
     }
 }

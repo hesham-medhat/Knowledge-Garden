@@ -189,6 +189,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AttachmentViewModel.cs" />
     <Compile Include="Models\FlowerAddOrEditViewModel.cs" />
     <Compile Include="Models\FlowerDisplayViewModel.cs" />
     <Compile Include="Models\FlowerViewModelFactory.cs" />
@@ -265,7 +266,6 @@
     <Content Include="Views\Attachments\Create.cshtml" />
     <Content Include="Views\Attachments\Delete.cshtml" />
     <Content Include="Views\Attachments\Details.cshtml" />
-    <Content Include="Views\Attachments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
