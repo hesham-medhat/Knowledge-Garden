@@ -17,5 +17,7 @@ namespace Knowledge_Garden.Engine.DataAccess
 
         /* Save */
         int Save();
+
+        int SaveAndDispose();
     }
 }

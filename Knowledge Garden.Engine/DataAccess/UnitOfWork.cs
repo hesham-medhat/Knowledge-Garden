@@ -49,5 +49,12 @@ namespace Knowledge_Garden.Engine.DataAccess
         {
             return _context.SaveChanges();
         }
+
+        public int SaveAndDispose()
+        {
+            int returner = Save();
+            Dispose();
+            return returner;
+        }
     }
 }

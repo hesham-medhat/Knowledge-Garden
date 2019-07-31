@@ -14,17 +14,28 @@ namespace Knowledge_Garden.Engine.DataAccess.Repositories
         }
 
 
-        public IEnumerable<string> GetNotificationsTitles(string employeeUsername)
+        public IEnumerable<KeyValuePair<int, string>> GetNotifications(string employeeUsername)
         {
-            return Context.Notifications
+            IList<KeyValuePair<int, string>> list = new List<KeyValuePair<int, string>>();
+
+            IEnumerable<Flower> flowers =
+                Context.Notifications
                 .Where(n => n.EmployeeUsername == employeeUsername)
-                .Select(n => n.Flower.Title)
+                .Select(n => n.Flower)
                 .ToList();
+
+            foreach (Flower f in flowers)
+            {
+                KeyValuePair<int, string> pair = new KeyValuePair<int, string>(f.Id, f.Title);
+                list.Add(pair);
+            }
+
+            return list;
         }
 
-        public IEnumerable<string> GetNotificationsTitles(Employee employee)
+        public IEnumerable<KeyValuePair<int, string>> GetNotifications(Employee employee)
         {
-            return GetNotificationsTitles(employee.Username);
+            return GetNotifications(employee.Username);
         }
     }
 }
