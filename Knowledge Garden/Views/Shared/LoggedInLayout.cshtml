@@ -13,14 +13,28 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 @Html.ActionLink("Knowledge Garden", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
+
+                <!-- Notification button -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success dropdown-toggle" id="notificationsButton" data-toggle="dropdown">
+                        Notifications <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" id="notificationsList">
+                        
+                        <li id="notificationsMessage">You're good! Nothing new!</li>
+
+                        <!-- Generated notifications look like this
+                        <li class="divider"></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                            -->
+                    </ul>
+                </div>
+
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
