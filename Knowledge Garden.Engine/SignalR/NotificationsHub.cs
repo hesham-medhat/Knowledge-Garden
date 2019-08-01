@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using Knowledge_Garden.Engine.DataAccess;
-using Knowledge_Garden.Engine.DataAccess.Repositories;
+using Knowledge_Garden.Engine.Models;
 
 namespace Knowledge_Garden.Engine.SignalR
 {
     [HubName("notificationsHub")]
     public class NotificationsHub : Hub
     {
-        public IEnumerable<KeyValuePair<int, string>> GetUnreadNotifications()
+        public IEnumerable<Flower> GetUnreadNotifications()
         {
             string username = Context.User.Identity.Name;
             
