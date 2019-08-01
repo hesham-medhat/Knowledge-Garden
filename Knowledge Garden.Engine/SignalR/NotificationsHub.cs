@@ -10,8 +10,8 @@ using Knowledge_Garden.Engine.DataAccess.Repositories;
 
 namespace Knowledge_Garden.Engine.SignalR
 {
-    [HubName("notifications")]
-    class NotificationsHub : Hub
+    [HubName("notificationsHub")]
+    public class NotificationsHub : Hub
     {
         public IEnumerable<KeyValuePair<int, string>> GetUnreadNotifications()
         {

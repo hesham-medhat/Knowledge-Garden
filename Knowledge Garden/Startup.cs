@@ -9,6 +9,8 @@ namespace Knowledge_Garden
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
+            app.MapSignalR();
         }
     }
 }
