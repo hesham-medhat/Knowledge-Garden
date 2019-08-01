@@ -11,6 +11,10 @@
         }
     });
 
+    var displayNotification = function (flower) {
+
+    }
+
     // Start the signalR connection
     connection.start()
     .done(
@@ -19,8 +23,7 @@
 
             // Define function for server to call
             $.connection.notificationsHub.client.RecieveNotification = function (data) {
-                alert(data.key);
-                alert(data.value);
+                debugger;
             };
 
 
@@ -38,8 +41,8 @@
                 }
             )
             .then(
-                function (retval) {
-                    console.log(retval);
+                function (flowers) {
+                    console.log(flowers);
                 }
             );
             console.log("After getUnreadNotifications");

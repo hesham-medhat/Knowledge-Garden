@@ -7,21 +7,22 @@ using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using Knowledge_Garden.Engine.DataAccess;
 using Knowledge_Garden.Engine.Models;
+using AutoMapper;
 
 namespace Knowledge_Garden.Engine.SignalR
 {
-    [HubName("notificationsHub")]
     public class NotificationsHub : Hub
     {
-        public IEnumerable<Flower> GetUnreadNotifications()
+        private IUnitOfWork uow = new UnitOfWork();
+
+        public IEnumerable<FlowerBL> GetUnreadNotifications()
         {
             string username = Context.User.Identity.Name;
-            
-            IUnitOfWork uow = new UnitOfWork();
 
-            var returner = uow.Notifications.GetNotifications(username);
+            var flowers = uow.Notifications.GetNotifications(username);
 
-            uow.SaveAndDispose();
+            IEnumerable<FlowerBL> returner = new List<FlowerBL>();
+            AutoMapper.BLMapper.GetMapper().Map(flowers, returner);
 
             return returner;
         }

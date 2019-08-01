@@ -1,4 +1,6 @@
-﻿using Microsoft.Owin;
+﻿using AutoMapper;
+using Knowledge_Garden.Engine.AutoMapper;
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(Knowledge_Garden.Startup))]
@@ -10,6 +12,7 @@ namespace Knowledge_Garden
         {
             ConfigureAuth(app);
 
+            // Configure signalR
             app.MapSignalR();
         }
     }
