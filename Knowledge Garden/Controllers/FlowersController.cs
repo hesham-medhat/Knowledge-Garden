@@ -74,11 +74,17 @@ namespace Knowledge_Garden.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Flower flower = uow.Flowers.GetFlower(id.Value);
             if (flower == null)
             {
                 return HttpNotFound();
             }
+            else if (!IsOwner(flower))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You do not own the flower you requested to edit");
+            }
+
             var flowerModel = FlowerViewModelFactory.CreateAddOrEditViewModel(flower);
             return View(flowerModel);
         }
@@ -90,6 +96,11 @@ namespace Knowledge_Garden.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Problem,Solution")] FlowerAddOrEditViewModel flowerModel)
         {
+            if (!IsOwner(flowerModel.Id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You do not own the flower you requested to edit");
+            }
+
             if (ModelState.IsValid)
             {
                 uow.Flowers.EditFlower(
@@ -110,11 +121,17 @@ namespace Knowledge_Garden.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Flower flower = uow.Flowers.GetFlower(id.Value);
             if (flower == null)
             {
                 return HttpNotFound();
             }
+            else if (!IsOwner(flower))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You do not own the flower you request to delete");
+            }
+
             var flowerModel = FlowerViewModelFactory.CreateAddOrEditViewModel(flower);
             return View(flowerModel);
         }
@@ -124,6 +141,10 @@ namespace Knowledge_Garden.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (!IsOwner(id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You do not own the flower you requested to delete");
+            }
             uow.Flowers.RemoveFlower(id);
             return RedirectToAction("Index");
         }
@@ -136,6 +157,17 @@ namespace Knowledge_Garden.Controllers
                 uow.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        private bool IsOwner(Flower flower)
+        {
+            return flower.OwnerUsername == User.Identity.Name;
+        }
+
+        private bool IsOwner(int flowerId)
+        {
+            return IsOwner(uow.Flowers.Find(flowerId));
         }
     }
 }
