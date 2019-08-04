@@ -4,6 +4,8 @@ using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.AspNet.SignalR;
+using Knowledge_Garden.Engine.SignalR;
 
 namespace Knowledge_Garden.Engine.DataAccess.Repositories
 {
@@ -41,7 +43,17 @@ namespace Knowledge_Garden.Engine.DataAccess.Repositories
                 Solution = solution,
                 Title = title
             };
+
             Context.Flowers.Add(flower);
+
+            /* Notify online clients with SignalR */
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<NotificationsHub>();
+
+            /* Prepare parameter */
+            FlowerBL parameter = new FlowerBL();
+            AutoMapper.BLMapper.GetMapper().Map(flower, parameter);
+
+            hubContext.Clients.All.receiveNotification(parameter);
         }
 
         public void EditFlower(string editorUsername, int flowerId, string problem, string solution, string title)

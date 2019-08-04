@@ -7,7 +7,6 @@ using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using Knowledge_Garden.Engine.DataAccess;
 using Knowledge_Garden.Engine.Models;
-using AutoMapper;
 
 namespace Knowledge_Garden.Engine.SignalR
 {

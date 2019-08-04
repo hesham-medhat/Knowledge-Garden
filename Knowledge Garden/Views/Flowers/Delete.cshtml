@@ -21,14 +21,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Owner.Username)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Owner.Username)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Problem)
         </dt>
 
@@ -45,18 +37,10 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LastUpdateDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastUpdateDate)
-        </dd>
-
-        <dt>
             @Html.DisplayFor(model => model.AttachmentNames)
         </dt>
 
-        @if (Model.Attachments != null)
+        @if (Model.AttachmentNames != null)
         {
             foreach (var item in Model.AttachmentNames)
             {
