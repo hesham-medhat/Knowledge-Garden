@@ -59,10 +59,10 @@
 
             foreach (var item in Model.AttachmentNames)
             {
-            <dd>
-                @Html.Label(item)
-                <a target="_blank" href="Attachments/Details/@Model.Id/@item">Download File</a>
-            </dd>
+                <dd>
+                    @Html.Label(item)
+                    <a target="_blank" href="Attachments/Details/@Model.Id/@item">Download File</a>
+                </dd>
 
             }
         }
@@ -70,6 +70,10 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @if (Model.OwnerUsername == User.Identity.Name)
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+        <span> | </span>
+    }
     @Html.ActionLink("Back to List", "Index")
 </p>
