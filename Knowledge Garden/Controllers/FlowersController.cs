@@ -36,7 +36,7 @@ namespace Knowledge_Garden.Controllers
                 return HttpNotFound();
             }
             // Generate display view model
-            FlowerDisplayViewModel displayFlower = FlowerViewModelFactory.CreateDisplayModel(flower);
+            FlowerDisplayViewModel displayFlower = FlowerViewModelFactory.CreateDisplayModel(flower, uow);
             return View(displayFlower);
         }
 

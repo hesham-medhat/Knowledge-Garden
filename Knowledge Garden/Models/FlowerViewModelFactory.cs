@@ -1,4 +1,5 @@
-﻿using Knowledge_Garden.Engine.Models;
+﻿using Knowledge_Garden.Engine.DataAccess;
+using Knowledge_Garden.Engine.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace Knowledge_Garden.Models
 {
     public static class FlowerViewModelFactory
     {
-        public static FlowerDisplayViewModel CreateDisplayModel(Flower flower)
+        public static FlowerDisplayViewModel CreateDisplayModel(Flower flower, IUnitOfWork uow)
         {
             FlowerDisplayViewModel model = new FlowerDisplayViewModel
             {
@@ -17,7 +18,8 @@ namespace Knowledge_Garden.Models
                 Title = flower.Title,
                 OwnerUsername = flower.Owner.Username,
                 Id = flower.Id,
-                LastUpdateDate = flower.LastUpdateDate
+                LastUpdateDate = flower.LastUpdateDate,
+                AttachmentNames = uow.Attachments.GetAttachmentNamesOf(flower)
             };
             return model;
         }

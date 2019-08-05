@@ -51,17 +51,17 @@
             @Html.DisplayFor(model => model.LastUpdateDate)
         </dd>
 
-        <dt>
-            @Html.DisplayFor(model => model.AttachmentNames)
-        </dt>
-
         @if (Model.AttachmentNames != null)
         {
+            <dt>
+                @Html.Label("Attachments")
+            </dt>
+
             foreach (var item in Model.AttachmentNames)
             {
             <dd>
                 @Html.Label(item)
-                <a  target="_blank" href="@item" >Download File</a>
+                <a target="_blank" href="Attachments/Details/@Model.Id/@item">Download File</a>
             </dd>
 
             }
