@@ -23,6 +23,9 @@
     var reportNotificationsInMsg = function () {
         var notificationsMessage = document.getElementById("notificationsMessage");
         notificationsMessage.textContent = "You have unread notifications!";
+
+        var notificationsButton = document.getElementById("notificationsButton");
+        notificationsButton.className = "btn btn-warning dropdown-toggle";
     }
 
     var appendNotification = function (flower, notificationsList) {
@@ -103,7 +106,5 @@
             alert("Connection with the notification system failed.");
         }
     );
-
-    
 
 })()

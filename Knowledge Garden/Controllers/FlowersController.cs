@@ -37,6 +37,14 @@ namespace Knowledge_Garden.Controllers
             }
             // Generate display view model
             FlowerDisplayViewModel displayFlower = FlowerViewModelFactory.CreateDisplayModel(flower, uow);
+
+            // Remove notification if exists
+            Notification n = uow.Notifications.Find(User.Identity.Name, id.Value);
+            if (n != null)
+            {
+                uow.Notifications.Remove(n);
+            }
+
             return View(displayFlower);
         }
 
