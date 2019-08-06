@@ -29,36 +29,10 @@ namespace Knowledge_Garden.Controllers
             {
                 return HttpNotFound();
             }
-            return View(attachment);
-        }
 
-        // GET: Attachments/Create
-        public ActionResult Create(int flowerId)
-        {
-            ViewBag.FlowerId = flowerId;
-            return View();
-        }
+            Response.AppendHeader("content-disposition", "inline; filename=" + attachment.Name);
 
-        // POST: Attachments/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FlowerId,Name,blobValue")] Attachment attachment)
-        {
-            if (ModelState.IsValid)
-            {
-                if (!IsOwnedAttachment(attachment))
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
-                }
-
-                uow.Attachments.Add(attachment);
-                return RedirectToAction("Details", "Flowers", attachment.FlowerId);
-            }
-
-            ViewBag.FlowerId = attachment.FlowerId;
-            return View(attachment);
+            return File(attachment.blobValue, attachment.ContentType);
         }
 
         // GET: Attachments/Delete/5
@@ -116,7 +90,6 @@ namespace Knowledge_Garden.Controllers
         /// </summary>
         /// <param name="attachment">The attachment object in question used for getting 
         /// the FlowerId property</param>
-        /// <returns></returns>
         private bool IsOwnedAttachment(Attachment attachment)
         {
             return uow.Flowers.Find(attachment.FlowerId).OwnerUsername == User.Identity.Name;
