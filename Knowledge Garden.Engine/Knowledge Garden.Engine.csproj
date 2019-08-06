@@ -218,6 +218,10 @@
     <Compile Include="Migrations\201908060853476_AddTempFileName.Designer.cs">
       <DependentUpon>201908060853476_AddTempFileName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908061216043_AddContentTypeToFiles.cs" />
+    <Compile Include="Migrations\201908061216043_AddContentTypeToFiles.Designer.cs">
+      <DependentUpon>201908061216043_AddContentTypeToFiles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationInformation.cs" />
     <Compile Include="Models\Attachment.cs" />
@@ -260,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908060853476_AddTempFileName.resx">
       <DependentUpon>201908060853476_AddTempFileName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908061216043_AddContentTypeToFiles.resx">
+      <DependentUpon>201908061216043_AddContentTypeToFiles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

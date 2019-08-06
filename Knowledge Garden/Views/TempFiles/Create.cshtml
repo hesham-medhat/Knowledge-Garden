@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/LoggedInLayout.cshtml";
+}
+
+<h2>Upload File</h2>
+<hr />
+
+@using (Html.BeginForm("Create", "TempFiles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+        @Html.AntiForgeryToken()
+
+        <h4>Choose the file you would like to attach</h4>
+        <input type="file" name="fileBase" />
+        <br />
+        <input type="submit" name="Submit" value="Upload" />
+
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

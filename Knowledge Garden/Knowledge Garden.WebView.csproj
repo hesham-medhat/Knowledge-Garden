@@ -267,6 +267,7 @@
     <Compile Include="Controllers\FlowersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TempFilesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -347,9 +348,9 @@
     <Content Include="Views\Flowers\Details.cshtml" />
     <Content Include="Views\Flowers\Edit.cshtml" />
     <Content Include="Views\Flowers\Index.cshtml" />
-    <Content Include="Views\Attachments\Create.cshtml" />
     <Content Include="Views\Attachments\Delete.cshtml" />
-    <Content Include="Views\Attachments\Details.cshtml" />
+    <Content Include="Views\TempFiles\Create.cshtml" />
+    <Content Include="Views\TempFiles\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
