@@ -19,6 +19,8 @@ namespace Knowledge_Garden.Engine.Models
         [Key, Column(Order = 2)]
         public int Id { get; set; }
 
+        public string Name { get; set; }
+
         [Required]
         public byte[] blobValue { get; set; }
     }

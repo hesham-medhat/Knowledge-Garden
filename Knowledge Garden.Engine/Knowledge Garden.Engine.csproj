@@ -187,8 +187,12 @@
     <Compile Include="DataAccess\Repositories\IFlowerRepository.cs" />
     <Compile Include="DataAccess\Repositories\INotificationRepository.cs" />
     <Compile Include="DataAccess\Repositories\IRepository.cs" />
+    <Compile Include="DataAccess\Repositories\IRequestRepository.cs" />
+    <Compile Include="DataAccess\Repositories\ITempFileRepository.cs" />
     <Compile Include="DataAccess\Repositories\NotificationRepository.cs" />
     <Compile Include="DataAccess\Repositories\Repository.cs" />
+    <Compile Include="DataAccess\Repositories\RequestRepository.cs" />
+    <Compile Include="DataAccess\Repositories\TempFileRepository.cs" />
     <Compile Include="DataAccess\UnitOfWork.cs" />
     <Compile Include="Migrations\201907251108445_CreateInitialSchema.cs" />
     <Compile Include="Migrations\201907251108445_CreateInitialSchema.Designer.cs">
@@ -209,6 +213,10 @@
     <Compile Include="Migrations\201908060833393_AddRequestsTrackingAndTempFiles.cs" />
     <Compile Include="Migrations\201908060833393_AddRequestsTrackingAndTempFiles.Designer.cs">
       <DependentUpon>201908060833393_AddRequestsTrackingAndTempFiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908060853476_AddTempFileName.cs" />
+    <Compile Include="Migrations\201908060853476_AddTempFileName.Designer.cs">
+      <DependentUpon>201908060853476_AddTempFileName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationInformation.cs" />
@@ -249,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908060833393_AddRequestsTrackingAndTempFiles.resx">
       <DependentUpon>201908060833393_AddRequestsTrackingAndTempFiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908060853476_AddTempFileName.resx">
+      <DependentUpon>201908060853476_AddTempFileName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
