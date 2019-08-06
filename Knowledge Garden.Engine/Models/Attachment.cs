@@ -27,5 +27,8 @@ namespace Knowledge_Garden.Engine.Models
 
         [Required]
         public byte[] blobValue { get; set; }
+
+        [Required]
+        public string ContentType { get; set; }
     }
 }
