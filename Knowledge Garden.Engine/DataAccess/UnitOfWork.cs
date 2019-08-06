@@ -16,6 +16,9 @@ namespace Knowledge_Garden.Engine.DataAccess
         public IEmployeeRepository Employees { get; private set; }
         public IFlowerRepository Flowers { get; private set; }
         public INotificationRepository Notifications { get; private set; }
+        public ITempFileRepository TempFiles { get; private set; }
+        public IRequestRepository Requests { get; private set; }
+
 
         public UnitOfWork (ApplicationDbContext context)
         {
@@ -23,6 +26,7 @@ namespace Knowledge_Garden.Engine.DataAccess
 
             Init(_context);
         }
+
 
         public UnitOfWork()
         {
@@ -38,6 +42,8 @@ namespace Knowledge_Garden.Engine.DataAccess
             Employees = new EmployeeRepository(context);
             Flowers = new FlowerRepository(context);
             Notifications = new NotificationRepository(context);
+            TempFiles = new TempFileRepository(context);
+            Requests = new RequestRepository(context);
         }
 
         public void Dispose()

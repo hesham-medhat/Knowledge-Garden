@@ -20,5 +20,8 @@ namespace Knowledge_Garden.Engine.Models
 
         [Required]
         public string OwnerUsername { get; set; }
+
+
+        public virtual ICollection<TempFile> TempFiles { get; set; }
     }
 }

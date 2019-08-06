@@ -13,6 +13,7 @@ namespace Knowledge_Garden.Engine.AutoMapper
         public AutoMapperProfile()
         {
             CreateMap<Flower, FlowerBL>().ReverseMap();
+            CreateMap<TempFile, Attachment>();
         }
     }
 }

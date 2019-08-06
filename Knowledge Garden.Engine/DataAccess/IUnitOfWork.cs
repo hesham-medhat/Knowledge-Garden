@@ -1,4 +1,5 @@
 ﻿using Knowledge_Garden.DataAccess.Repositories;
+using Knowledge_Garden.Engine.DataAccess.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace Knowledge_Garden.Engine.DataAccess
         IEmployeeRepository Employees { get; }
         IFlowerRepository Flowers { get; }
         INotificationRepository Notifications { get; }
+        ITempFileRepository TempFiles { get; }
+        IRequestRepository Requests { get; }
 
         /* Save */
         int Save();
