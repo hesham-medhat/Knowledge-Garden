@@ -19,8 +19,8 @@ namespace Knowledge_Garden.Engine.DataAccess.Repositories
 
 
         /// <returns>Newly created flower's identifier</returns>
-        int CompleteRequest(Request request, Flower newFlower);
+        void CompleteRequest(int requestId, string editorUsername, string problem, string solution, string title);
         /// <returns>Newly created flower's identifier</returns>
-        int CompleteRequest(int requestId, Flower newFlower);
+        void CompleteRequest(Request request, string editorUsername, string problem, string solution, string title);
     }
 }

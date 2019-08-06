@@ -51,6 +51,10 @@ namespace Knowledge_Garden.Controllers
         // GET: Flowers/Create
         public ActionResult Create()
         {
+            // Issue a request to given session
+            int newRequestId = uow.Requests.StartRequest(User.Identity.Name);
+            Session["RID"] = newRequestId;
+
             return View();
         }
 
@@ -61,9 +65,23 @@ namespace Knowledge_Garden.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Title,Problem,Solution")] FlowerAddOrEditViewModel flowerModel)
         {
+            // Obtain request from session
+            int? rId = (int?)Session["RID"];
+            if (rId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Your session isn't undergoing a request to perform this action");
+            }
+            int requestId = rId.Value;
+            Request request = uow.Requests.Find(requestId);
+            if (request == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Try another request session");
+            }
+
             if (ModelState.IsValid)
             {
-                uow.Flowers.AddFlower(
+                uow.Requests.CompleteRequest(
+                    request: request,
                     editorUsername: User.Identity.Name,
                     problem: flowerModel.Problem,
                     solution: flowerModel.Solution,

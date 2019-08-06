@@ -1,5 +1,7 @@
 ﻿using Knowledge_Garden.DataAccess.Repositories;
 using Knowledge_Garden.Engine.Models;
+using Knowledge_Garden.Engine.SignalR;
+using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,32 +16,52 @@ namespace Knowledge_Garden.Engine.DataAccess.Repositories
         {
         }
 
-        public int CompleteRequest(int requestId, Flower newFlower)
+        public void CompleteRequest(int requestId, string editorUsername, string problem, string solution, string title)
         {
-            return CompleteRequest(Context.Requests.Find(requestId), newFlower);
+            CompleteRequest(Context.Requests.Find(requestId), editorUsername, problem, solution, title);
         }
 
-        public int CompleteRequest(Request request, Flower newFlower)
+        public void CompleteRequest(Request request, string editorUsername, string problem, string solution, string title)
         {
             if (request == null)
             {
                 throw new ArgumentException("Invalid request");
             }
-            if (newFlower.OwnerUsername != request.OwnerUsername)
+            if (editorUsername != request.OwnerUsername)
             {
                 throw new InvalidOperationException("FORBIDDEN: Cannot complete a request of another user");
             }
+
+            Flower newFlower = new Flower
+            {
+                LastUpdateDate = DateTime.Now,
+                OwnerUsername = editorUsername,
+                Problem = problem,
+                Solution = solution,
+                Title = title
+            };
 
             // Map temp files to this flower's attachments
             AutoMapper.BLMapper.GetMapper().Map(request.TempFiles, newFlower.Attachments);
 
             // Create new flower
-            int newFlowerId = Context.Flowers.Add(newFlower).Id;
+            Context.Flowers.Add(newFlower);
 
             // Delete request and temp files
             Context.Requests.Remove(request);
 
-            return newFlowerId;
+            // Save changes to send notification to all clients
+            Context.SaveChanges();
+
+
+            /* Notify online clients with SignalR */
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<NotificationsHub>();
+
+            /* Prepare parameter */
+            FlowerBL parameter = new FlowerBL();
+            AutoMapper.BLMapper.GetMapper().Map(newFlower, parameter);
+
+            hubContext.Clients.All.receiveNotification(parameter);
         }
 
 
@@ -52,9 +74,10 @@ namespace Knowledge_Garden.Engine.DataAccess.Repositories
             };
 
             // Create new request
-            int newRequestId = Context.Requests.Add(newRequest).Id;
+            Context.Requests.Add(newRequest);
+            Context.SaveChanges();
 
-            return newRequestId;
+            return newRequest.Id;
         }
     }
 }

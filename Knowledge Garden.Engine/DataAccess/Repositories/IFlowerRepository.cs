@@ -10,7 +10,6 @@ namespace Knowledge_Garden.DataAccess.Repositories
     public interface IFlowerRepository : IRepository<Flower>
     {
         Flower GetFlower(int value);
-        void AddFlower(string editorUsername, string problem, string solution, string title);
         void EditFlower(string editorUsername, int flowerId, string problem, string solution, string title);
         void RemoveFlower(int deletedFlowerId);
 
