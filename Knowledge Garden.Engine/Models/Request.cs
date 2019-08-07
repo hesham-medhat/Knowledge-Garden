@@ -15,7 +15,6 @@ namespace Knowledge_Garden.Engine.Models
         [Required]
         public DateTime Timestamp { get; set; }
 
-        [Required]
         public Employee Owner { get; set; }
 
         [Required]
