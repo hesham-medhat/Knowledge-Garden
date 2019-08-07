@@ -64,8 +64,6 @@ namespace Knowledge_Garden.Engine.DataAccess.Repositories
             flower.LastUpdateDate = DateTime.Now;
 
             Context.Entry(flower).State = EntityState.Modified;
-            Context.Entry(flower).Property(f => f.Owner).IsModified = false;
-            Context.Entry(flower).Property(f => f.Id).IsModified = false;
         }
 
         public IEnumerable<Flower> GetNotificationFlowers(string employeeUsername)

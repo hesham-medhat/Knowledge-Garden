@@ -41,6 +41,8 @@ namespace Knowledge_Garden.Engine.DataAccess.Repositories
                 Title = title
             };
 
+            newFlower.Attachments = new List<Attachment>();
+
             // Map temp files to this flower's attachments
             AutoMapper.BLMapper.GetMapper().Map(request.TempFiles, newFlower.Attachments);
 
