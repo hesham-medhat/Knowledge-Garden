@@ -64,7 +64,7 @@
             foreach (var attachment in item.Attachments)
             {
                 <td>
-                    @Html.Label(attachment.Name)
+                   <label>@attachment.Name</label>
                     <a target="_blank" href="Attachments/Details/@item.Id/@attachment.Name">Download File</a>
                 </td>
             }

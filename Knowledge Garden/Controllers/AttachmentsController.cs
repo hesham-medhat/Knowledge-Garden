@@ -17,13 +17,10 @@ namespace Knowledge_Garden.Controllers
     {
         private IUnitOfWork uow = new UnitOfWork();
 
-        // GET: Attachments/Details/5
-        public ActionResult Details(int? flowerId, string attachmentName)
+
+        [Route("Attachments/Details/{flowerId?}/{attachmentName}")]
+        public ActionResult Details(int flowerId, string attachmentName)
         {
-            if (flowerId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Attachment attachment = uow.Attachments.Find(flowerId, attachmentName);
             if (attachment == null)
             {
@@ -36,13 +33,9 @@ namespace Knowledge_Garden.Controllers
         }
 
         // GET: Attachments/Delete/5
-        public ActionResult Delete(int? flowerId, string attachmentName)
+        [Route("Attachments/Delete/{flowerId}/{attachmentName}")]
+        public ActionResult Delete(int flowerId, string attachmentName)
         {
-            if (flowerId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             // Check that attachment exists
             Attachment attachment = uow.Attachments.Find(flowerId, attachmentName);
             if (attachment == null)
@@ -58,7 +51,7 @@ namespace Knowledge_Garden.Controllers
             // Build view model
             AttachmentViewModel attachmentViewModel = new AttachmentViewModel
             {
-                FlowerId = flowerId.Value,
+                FlowerId = flowerId,
                 Name = attachmentName
             };
             return View(attachmentViewModel);

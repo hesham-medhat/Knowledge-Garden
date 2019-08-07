@@ -17,6 +17,30 @@ namespace Knowledge_Garden.Controllers
     {
         private IUnitOfWork uow = new UnitOfWork();
 
+        // GET: TempFiles/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TempFile file = uow.TempFiles.Find(id);
+            if (file == null)
+            {
+                return HttpNotFound();
+            }
+
+            /* Validate user is the owner of this file */
+            Request request = uow.Requests.Find(file.RequestId);
+            if (request.OwnerUsername != User.Identity.Name)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You do not own this file");
+            }
+
+            Response.AppendHeader("content-disposition", "inline; filename=" + file.Name);
+
+            return File(file.blobValue, file.ContentType);
+        }
 
         // GET: TempFiles/Create
         public ActionResult Create()
@@ -109,7 +133,7 @@ namespace Knowledge_Garden.Controllers
             }
 
             // Fetch file if exists
-            TempFile tempFile = uow.TempFiles.Find(requestId, id);
+            TempFile tempFile = uow.TempFiles.Find(id);
             if (tempFile == null)
             {
                 return HttpNotFound();
@@ -142,7 +166,7 @@ namespace Knowledge_Garden.Controllers
             }
 
             // Fetch file if exists
-            TempFile tempFile = uow.TempFiles.Find(requestId, id);
+            TempFile tempFile = uow.TempFiles.Find(id);
             if (tempFile == null)
             {
                 return HttpNotFound();
