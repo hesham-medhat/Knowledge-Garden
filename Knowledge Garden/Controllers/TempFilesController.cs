@@ -99,7 +99,7 @@ namespace Knowledge_Garden.Controllers
                 fileBase.InputStream.Read(tempFile.blobValue, 0, (fileBase.ContentLength));
 
                 uow.TempFiles.Add(tempFile);
-                return new HttpStatusCodeResult(HttpStatusCode.OK, "File saved. You may return back now.");
+                return JavaScript("window.close();");
             }
 
             return View();
@@ -173,7 +173,7 @@ namespace Knowledge_Garden.Controllers
             }
 
             uow.TempFiles.Remove(tempFile);
-            return new HttpStatusCodeResult(HttpStatusCode.OK, "Delete confirmed.");
+            return JavaScript("window.close();");
         }
 
         protected override void Dispose(bool disposing)
