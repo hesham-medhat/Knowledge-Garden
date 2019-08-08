@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Knowledge_Garden.Engine.Models.Attachment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LoggedInLayout.cshtml";
+}
+
+<h2>Attachments</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { id = ViewBag.flowerId })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ContentType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContentType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            <a target="_blank" href="~/Attachments/Details/@ViewBag.flowerId/@item.Name">Download</a> |
+            <a target="_blank" href="~/Attachments/Delete/@ViewBag.flowerId/@item.Name">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>

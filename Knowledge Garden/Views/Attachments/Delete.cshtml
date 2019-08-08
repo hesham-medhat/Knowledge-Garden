@@ -24,6 +24,9 @@
 
     @using (Html.BeginForm("Delete" , "Attachments")) {
         @Html.AntiForgeryToken()
+        <input type="hidden" value=@Model.FlowerId name="flowerId" />
+        <input type="hidden" value="@Model.Name" name="attachmentName" />
+
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" />
