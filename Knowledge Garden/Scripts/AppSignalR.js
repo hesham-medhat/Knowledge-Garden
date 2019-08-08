@@ -32,7 +32,7 @@
         var liFlower = document.createElement("li");
 
         var a = document.createElement("a");
-        a.href = "~/Flowers/Details/" + flower.Id;
+        a.href = "/Flowers/Details/" + flower.Id;
         a.text = flower.OwnerUsername + " has planted a new flower titled: \"" + flower.Title + "\"";
 
         liFlower.appendChild(a);
