@@ -17,6 +17,32 @@ namespace Knowledge_Garden.Controllers
     {
         private IUnitOfWork uow = new UnitOfWork();
 
+
+        public ActionResult Index()
+        {
+            // Obtain request from session
+            int? rId = (int?)Session["RID"];
+            if (rId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Your session isn't undergoing a request to perform this action");
+            }
+            int requestId = rId.Value;
+            Request request = uow.Requests.Find(requestId);
+            if (request == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Try another request session");
+            }
+
+            // Confirm user issued that request
+            if (request.OwnerUsername != User.Identity.Name)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "Session validation failed. You did not issue this request");
+            }
+
+            // All good at this point
+            return View(request.TempFiles);
+        }
+
         // GET: TempFiles/Details/5
         public ActionResult Details(int? id)
         {
@@ -99,7 +125,13 @@ namespace Knowledge_Garden.Controllers
                 fileBase.InputStream.Read(tempFile.blobValue, 0, (fileBase.ContentLength));
 
                 uow.TempFiles.Add(tempFile);
-                return JavaScript("window.close();");
+
+                // All good. Terminate.
+                return Content(@"<body>
+                       <script type='text/javascript'>
+                         window.close();
+                       </script>
+                     </body> ");
             }
 
             return View();
@@ -173,7 +205,13 @@ namespace Knowledge_Garden.Controllers
             }
 
             uow.TempFiles.Remove(tempFile);
-            return JavaScript("window.close();");
+
+            // All good. Terminate.
+            return Content(@"<body>
+                       <script type='text/javascript'>
+                         window.close();
+                       </script>
+                     </body> ");
         }
 
         protected override void Dispose(bool disposing)

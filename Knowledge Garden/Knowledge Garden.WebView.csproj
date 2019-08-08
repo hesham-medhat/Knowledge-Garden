@@ -350,6 +350,7 @@
     <Content Include="Views\Attachments\Delete.cshtml" />
     <Content Include="Views\TempFiles\Create.cshtml" />
     <Content Include="Views\TempFiles\Delete.cshtml" />
+    <Content Include="Views\TempFiles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -8,10 +8,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Flower</h4>
         <hr />
@@ -42,12 +42,19 @@
 
 
             <br /><br />
-            <a class="control-label col-md-2" href='javascript:openwindow();'>Append File</a>
+            <a class="control-label col-md-2" href='javascript:uploadNew();'>Append Attachment</a>
             <script>
-                    function openwindow()
-                    {
-                        var x=window.open('@Url.Content("~/TempFiles/Create")',target = '_blank', width = '200px', height = '200px');
-                    }
+                function uploadNew() {
+                    var x = window.open('@Url.Content("~/TempFiles/Create")', target = '_blank', width = '200px', height = '200px');
+                }
+            </script>
+
+            <br /><br />
+            <a class="control-label col-md-2" href='javascript:tempFilesIndex();'>Manage Uploaded Attachments</a>
+            <script>
+                function tempFilesIndex() {
+                    var x = window.open('@Url.Content("~/TempFiles/Index")', target = '_blank', width = '200px', height = '200px');
+                }
             </script>
 
 
