@@ -87,6 +87,8 @@ namespace Knowledge_Garden.Controllers
                     solution: flowerModel.Solution,
                     title: flowerModel.Title
                     );
+                Session["RID"] = null;
+
                 return RedirectToAction("Index");
             }
 
