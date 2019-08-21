@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Knowledge_Garden.Models
+namespace Knowledge_Garden.DataEntities
 {
     /// <summary>
     /// The class responsible for holding general information of the application in the

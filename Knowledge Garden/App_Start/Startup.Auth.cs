@@ -6,7 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Knowledge_Garden.Models;
-using Knowledge_Garden.Engine.DataAccess;
+using Knowledge_Garden.DataEntities.DataAccess;
+using Knowledge_Garden.DataEntities;
 
 namespace Knowledge_Garden
 {

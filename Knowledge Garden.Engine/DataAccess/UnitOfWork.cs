@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Knowledge_Garden.DataAccess.Repositories;
-using Knowledge_Garden.Engine.DataAccess.Repositories;
+using Knowledge_Garden.DataEntities.DataAccess.Repositories;
 
-namespace Knowledge_Garden.Engine.DataAccess
+namespace Knowledge_Garden.DataEntities.DataAccess
 {
     public class UnitOfWork : IUnitOfWork
     {

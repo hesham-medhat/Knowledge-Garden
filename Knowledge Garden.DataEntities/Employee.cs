@@ -1,10 +1,9 @@
-﻿using Knowledge_Garden.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Knowledge_Garden.Engine.Models
+namespace Knowledge_Garden.DataEntities
 {
     public class Employee
     {

@@ -6,9 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Knowledge_Garden.Engine.DataAccess;
-using Knowledge_Garden.Engine.Models;
+using Knowledge_Garden.DataEntities.DataAccess;
+using Knowledge_Garden.DataEntities.Models;
 using Knowledge_Garden.Models;
+using Knowledge_Garden.DataEntities;
 
 namespace Knowledge_Garden.Controllers
 {

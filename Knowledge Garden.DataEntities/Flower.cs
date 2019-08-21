@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Knowledge_Garden.Engine.Models
+namespace Knowledge_Garden.DataEntities
 {
     public class Flower
     {

@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Knowledge_Garden.Models;
+using Knowledge_Garden.DataEntities;
 
 namespace Knowledge_Garden.Controllers
 {

@@ -20,14 +20,14 @@ namespace Knowledge_Garden.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = Knowledge_Garden.Models.ApplicationInformation.ShortDescription;
+            ViewBag.Message = Knowledge_Garden.DataEntities.ApplicationInformation.ShortDescription;
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = Knowledge_Garden.Models.ApplicationInformation.Credits;
+            ViewBag.Message = Knowledge_Garden.DataEntities.ApplicationInformation.Credits;
 
             return View();
         }

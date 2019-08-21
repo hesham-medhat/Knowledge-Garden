@@ -1,4 +1,4 @@
-﻿using Knowledge_Garden.Engine.DataAccess;
+﻿using Knowledge_Garden.DataEntities.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

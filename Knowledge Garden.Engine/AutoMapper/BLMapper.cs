@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Knowledge_Garden.Engine.AutoMapper
+namespace Knowledge_Garden.DataEntities.AutoMapper
 {
     class BLMapper
     {

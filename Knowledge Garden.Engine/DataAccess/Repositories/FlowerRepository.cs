@@ -1,11 +1,12 @@
 ﻿using Knowledge_Garden.DataAccess.Repositories;
-using Knowledge_Garden.Engine.Models;
+using Knowledge_Garden.DataEntities.Models;
 using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Collections.Generic;
+using Knowledge_Garden.DataEntities;
 
-namespace Knowledge_Garden.Engine.DataAccess.Repositories
+namespace Knowledge_Garden.DataEntities.DataAccess.Repositories
 {
     class FlowerRepository : Repository<Flower>, IFlowerRepository
     {

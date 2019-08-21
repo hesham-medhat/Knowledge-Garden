@@ -10,9 +10,10 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Knowledge_Garden.Models;
-using Knowledge_Garden.Engine.DataAccess;
+using Knowledge_Garden.DataEntities.Models;
+using Knowledge_Garden.DataEntities.DataAccess;
 using System.Text.RegularExpressions;
+using Knowledge_Garden.DataEntities;
 
 namespace Knowledge_Garden
 {

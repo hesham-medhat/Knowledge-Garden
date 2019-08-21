@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Knowledge_Garden.Engine.AutoMapper;
+using Knowledge_Garden.DataEntities.AutoMapper;
 using Microsoft.Owin;
 using Owin;
 

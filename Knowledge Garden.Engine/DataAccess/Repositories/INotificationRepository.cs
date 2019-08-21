@@ -1,4 +1,5 @@
-﻿using Knowledge_Garden.Engine.Models;
+﻿using Knowledge_Garden.DataEntities;
+using Knowledge_Garden.DataEntities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
